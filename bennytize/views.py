@@ -15,26 +15,25 @@ def index():
 
     if form.validate_on_submit():
 
-        requests.get(form.youtube_url.data)
+        bennylink = utils.get_bennylink(form.youtube_url.data)
 
-        bennylink = utils.get_bennylink()
-
-        return redirect(url_for('bennylink', bennylink=bennylink))
+        return render_template('index.jinja2',
+                               form=form,
+                               msg=bennylink)
 
     elif form.errors:
 
-        msg = form.errors[0]
+        return render_template('index.jinja2',
+                               form=form,
+                               msg=form.errors['youtube_url'][0])
 
     return render_template('index.jinja2',
-                           form=form)
+                           form=form,
+                           msg=None)
 
-@app.route('/', methods=['POST'])
-def bennylink():
-    pass
 
 @app.route('/<string:video_id>')
 def bennytized(video_id):
-    print video_id
 
     source = utils.bennytize(video_id)
 
