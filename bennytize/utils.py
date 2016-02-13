@@ -7,6 +7,9 @@ import requests
 from bennytize import app
 
 def get_bennylink(youtube_url):
+    """
+        create a bitly link for the bennytized page
+    """
 
     video_id = re.search('\?v=[a-zA-Z0-9_\-]+', youtube_url).group()
 
@@ -32,6 +35,9 @@ def bennytize(video_id):
     return source
 
 def add_benny(source):
+    """
+        put the benny video at the end of the page
+    """
 
     target = '</body></html>'
     replacement = '''
@@ -43,8 +49,9 @@ def add_benny(source):
     return source.replace(target, replacement)
 
 def add_jquery(source):
-
-## add jquery to the head of the page
+    """
+        add jquery in the head
+    """
     target = '<head>'
     replacement = '<head><script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>'
     source = source.replace(target, replacement)
@@ -52,6 +59,9 @@ def add_jquery(source):
     return source.replace(target, replacement)
 
 def add_muted_player(source, video_id):
+    """
+        replace the original youtube player with a muted one
+    """
 
     original_player = '<div id="player-api" class="player-width player-height off-screen-target player-api" tabIndex="-1"></div>'
     muted_player = '''
@@ -93,6 +103,9 @@ def add_muted_player(source, video_id):
     return source.replace(target, target+muted_player.replace('VIDEO_ID_HERE', video_id))
 
 def change_links(source):
+    """
+        chang all links to go to bennytize homepage
+    """
 
     target = '</body></html>'
 

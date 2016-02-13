@@ -19,7 +19,7 @@ def index():
 
         return render_template('index.jinja2',
                                form=form,
-                               msg=bennylink)
+                               msg='Here\'s your BennyLink: {}'.format(bennylink))
 
     elif form.errors:
 
@@ -29,7 +29,7 @@ def index():
 
     return render_template('index.jinja2',
                            form=form,
-                           msg=None)
+                           msg='')
 
 
 @app.route('/<string:video_id>')
