@@ -1,0 +1,23 @@
+<head>
+<link rel="stylesheet" href="static/benny.css">
+</head>
+
+<body>
+
+    <div>
+        <img src="static/bennytize.png">
+    </div>
+
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}
+        {{ form.youtube_url(placeholder="Paste YouTube Video URL here!") }}
+        <div class="row">
+            <div class="control-group">
+                <div class="controls">
+                    <input type="submit" value="Bennytize!">
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
