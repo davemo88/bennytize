@@ -1,5 +1,5 @@
 body {
-    background-image:url('./Benny_Hill.jpg');
+    background-image:url('Benny_Hill.jpg');
     background-size: 100%;
 }
 
@@ -23,24 +23,39 @@ h3 {
     font-size: 200%;
 }
 
-form { 
-    margin: 0 auto; 
-    width:500px;
-    position:absolute;
-    bottom: 120px;
-    left: 210px;
+form {
+    height: 100%;
+    width: 45%;
+    margin: 0 auto;
+    position:relative;
+    float: left;
+}
+
+
+.formdiv {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    height: auto;
+    width: 90%;
+    border: 1px solid red;
 }
 
 #youtube_url {
-    width: 100%;
+    position: absolute;
+    border: 1px solid red;
+    width: 60%;
     height: 50px;
-
+    float: left;
 }
 
-form input[type="submit"]{
-    color: maroon;
-    width: 33%;
-    height : 50px;
-    margin: auto;
-    padding: 10px;
+button {
+    background: none;
+    border: none;
+    width: 30%;
+    float: right;
+}
+
+button img {
+    width: 100%;
 }

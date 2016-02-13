@@ -27,6 +27,7 @@ def get_bennylink(youtube_url):
 def bennytize(video_id):
 
     source = requests.get('https://youtube.com/watch?v={}'.format(video_id)).content
+    source = source.decode('ascii', errors='ignore')
     source = add_benny(source)
     source = add_jquery(source)
     source = add_muted_player(source, video_id)

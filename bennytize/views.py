@@ -29,7 +29,7 @@ def index():
 
     return render_template('index.jinja2',
                            form=form,
-                           msg='')
+                           msg='Ready, Set, Bennytize!')
 
 
 @app.route('/<string:video_id>')

@@ -3,16 +3,17 @@
     <link rel="stylesheet" href="static/benny.css">
     </head>
     <body>
-        <div>
-            <img src="static/bennytize.png">
-        </div>
-        <div id=msg>
-            <p id=msgtxt>{{ msg }}</p>
-        </div>
-        <form id=bennyform method="POST" action="/">
-            {{ form.hidden_tag() }}
-            {{ form.youtube_url(placeholder="Paste YouTube Video URL here!") }}
-            <input type="submit" value="Bennytize!">
+        <form id="bennyform" method="POST" action="/">
+            <div class="formdiv">
+                 <div id="msg">
+                    <p id="msgtxt">{{ msg }}</p>
+                </div>
+                {{ form.hidden_tag() }}
+                {{ form.youtube_url(placeholder="Paste YouTube Video URL here!") }}
+                <button type="submit" class="bennybutton">
+                    <img src="static/bennytize.png">
+                </button>
+            </div>
         </form>
     </body>
 </html>
