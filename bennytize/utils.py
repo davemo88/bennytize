@@ -31,6 +31,9 @@ def get_bennylink(youtube_url):
     return bennylink
 
 def bennytize(video_id):
+    """
+
+    """
 
     source = requests.get('https://youtube.com/watch?v={}'.format(video_id)).content
     source = source.decode('ascii', errors='ignore')
@@ -111,7 +114,7 @@ def add_muted_player(source, video_id):
 
 def change_links(source):
     """
-        chang all links to go to bennytize homepage
+        change all links to go to bennytize homepage
     """
 
     target = '</body></html>'

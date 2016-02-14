@@ -1,16 +1,15 @@
 <html>
     <head>
     <link rel="stylesheet" href="static/benny.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     </head>
     <body>
+        <p id="msgtxt">{{ msg }}</p>
         <form id="bennyform" method="POST" action="/">
             <div class="formdiv">
-                 <div id="msg">
-                    <p id="msgtxt">{{ msg }}</p>
-                </div>
                 {{ form.hidden_tag() }}
                 {{ form.youtube_url(placeholder="Paste YouTube Video URL here!") }}
-                <button type="submit" class="bennybutton">
+                <button type="submit" class="hvr-pulse-grow">
                     <img src="static/bennytize.png">
                 </button>
             </div>

@@ -17,19 +17,19 @@ def index():
 
         bennylink = utils.get_bennylink(form.youtube_url.data)
 
-        return render_template('index.jinja2',
-                               form=form,
-                               msg='Here\'s your BennyLink: {}'.format(bennylink))
+        msg = 'Here\'s your BennyLink: {}'.format(bennylink)
 
     elif form.errors:
 
-        return render_template('index.jinja2',
-                               form=form,
-                               msg=form.errors['youtube_url'][0])
+        msg = form.errors['youtube_url'][0]
+
+    else:
+
+        msg = 'Ready, Set, Bennytize!'
 
     return render_template('index.jinja2',
                            form=form,
-                           msg='Ready, Set, Bennytize!')
+                           msg=msg)
 
 
 @app.route('/<string:video_id>')

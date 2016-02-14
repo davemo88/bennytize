@@ -7,7 +7,8 @@ RUN apt-get purge -y python.*
 # RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list
 
 RUN apt-get update \
-    && apt-get install -y ca-certificates \
+    && apt-get install -y vim\
+                          ca-certificates \
                           nginx \
                           build-essential \
                           python \
@@ -36,6 +37,8 @@ RUN rm -f /etc/nginx/sites-enabled/default \
 WORKDIR /var/www/bennytize
 
 ADD nginx/bennytize.conf /etc/nginx/sites-available/
+RUN ln -s /etc/nginx/sites-available/bennytize.conf /etc/nginx/sites-enabled/bennytize.conf
+
 ADD nginx/bennytize_uwsgi.conf ./
 
 ADD bennytize ./bennytize/
