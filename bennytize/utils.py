@@ -11,18 +11,24 @@ def get_bennylink(youtube_url):
         create a bitly link for the bennytized page
     """
 
-    video_id = re.search('\?v=[a-zA-Z0-9_\-]+', youtube_url).group()
+    video_id = re.search('\?v=[a-zA-Z0-9_\-]+', youtube_url).group()[3:]
 
-    url = 'http://{}/{}'.format(app.config['DOMAIN_NAME'],video_id[3:])
+    if 'localhost' in app.config['DOMAIN_NAME']:
 
-    r = requests.get(
-        'https://api-ssl.bitly.com/v3/shorten?access_token={}&longUrl={}&format=json'
-            .format(app.config['BITLY_API_TOKEN'],url)
-    )
+        bennylink = 'http://localhost:5000/{}'.format(video_id)
 
-    print r.json()
+    else:
 
-    return r.json()['data']['url']
+        url = 'http://{}/{}'.format(app.config['DOMAIN_NAME'],video_id)
+
+        r = requests.get(
+            'https://api-ssl.bitly.com/v3/shorten?access_token={}&longUrl={}&format=json'
+                .format(app.config['BITLY_API_TOKEN'],url)
+        )
+
+        bennylink = r.json()['data']['url']
+
+    return bennylink
 
 def bennytize(video_id):
 

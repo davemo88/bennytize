@@ -29,16 +29,16 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 VOLUME ["/var/cache/nginx"]
 
-ADD nginx/bennytize.conf /etc/nginx/sites-available/
-ADD nginx/bennytize_uwsgi.ini ./
-
 RUN rm -f /etc/nginx/sites-enabled/default \
-  && mkdir -p /var/www/bennytize
+  && mkdir -p /var/www/bennytize \
+  && mkdir /var/log/uwsgi
 
 WORKDIR /var/www/bennytize
 
+ADD nginx/bennytize.conf /etc/nginx/sites-available/
+ADD nginx/bennytize_uwsgi.conf ./
+
 ADD bennytize ./bennytize/
-ADD run.py ./
 
 RUN chown -R www-data:www-data /var/www/bennytize
 
