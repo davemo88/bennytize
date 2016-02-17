@@ -17,7 +17,7 @@ def index():
 
         bennylink = utils.get_bennylink(form.youtube_url.data)
 
-        msg = 'Here\'s your BennyLink: {}'.format(bennylink)
+        msg = bennylink
 
     elif form.errors:
 
@@ -25,7 +25,7 @@ def index():
 
     else:
 
-        msg = 'Ready, Set, Bennytize!'
+        msg = ''
 
     return render_template('index.jinja2',
                            form=form,
